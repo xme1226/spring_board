@@ -93,7 +93,7 @@ public class BController {
 	
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, Model model) {
-		System.out.println("delete() start");
+		System.out.println("delete() start"); 
 		
 		model.addAttribute("request", request);
 		command = new BReplyCommand();
