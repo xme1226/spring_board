@@ -2,6 +2,8 @@ package com.spring_tutorial.board_example.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +15,20 @@ import com.spring_tutorial.board_example.command.BListCommand;
 import com.spring_tutorial.board_example.command.BModifyCommand;
 import com.spring_tutorial.board_example.command.BReplyCommand;
 import com.spring_tutorial.board_example.command.BWriteCommand;
+import com.spring_tutorial.board_example.util.Constant;
 
 @Controller
 public class BController {
 	
 	BCommand command;
+	
+	public JdbcTemplate template;
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = this.template;
+	}
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
